@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0 to Shipped — Resume Parser</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#">0<span class="logo-arrow">→</span>Shipped</a>
+    <nav>
+      <a href="#upload">Parser</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">Free · No signup · Runs in your browser</p>
+      <h1>Upload your resume.<br />Know exactly what's missing.</h1>
+      <p class="hero-sub">
+        Drop in a PDF and get a score out of 100, the skills that show up,
+        and the ones a recruiter would look for and not find.
+      </p>
+    </section>
+
+    <section id="upload" class="card">
+      <!-- State 1: waiting for a file -->
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload a PDF resume">
+        <div class="dropzone-icon" aria-hidden="true">📄</div>
+        <p class="dropzone-title">Drag &amp; drop your resume here</p>
+        <p class="dropzone-hint">or <span class="browse">browse files</span> — PDF only</p>
+        <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
+      </div>
+
+      <!-- State 2: mock "scanning" -->
+      <div id="scanning" class="scanning" hidden>
+        <p class="scanning-file" id="scanningFile"></p>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <p class="scanning-status" id="scanningStatus" aria-live="polite">Reading document…</p>
+      </div>
+    </section>
+
+    <!-- State 3: results -->
+    <section id="results" class="results" hidden aria-live="polite">
+      <div class="card score-card">
+        <h2>Resume score</h2>
+        <div class="gauge">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="gauge-bg" cx="60" cy="60" r="52" />
+            <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="52" />
+          </svg>
+          <div class="gauge-number">
+            <span id="scoreValue">0</span><span class="gauge-max">/100</span>
+          </div>
+        </div>
+        <p class="verdict" id="verdict"></p>
+        <p class="mock-note">Mock mode — results are simulated from your file. Hook up a real parser later.</p>
+      </div>
+
+      <div class="card skills-card">
+        <h2>Skills found <span class="count" id="foundCount"></span></h2>
+        <ul class="chips" id="foundSkills"></ul>
+
+        <h2 class="missing-heading">Missing skills <span class="count" id="missingCount"></span></h2>
+        <ul class="chips" id="missingSkills"></ul>
+
+        <button id="resetBtn" class="btn-secondary">Parse another resume</button>
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <h2>How it works</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <span class="how-num">1</span>
+          <h3>Upload</h3>
+          <p>Drop a PDF. Nothing leaves your browser — there's no server to send it to.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-num">2</span>
+          <h3>Parse</h3>
+          <p>The text is extracted and scanned for skills, sections and keywords recruiters filter on.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-num">3</span>
+          <h3>Score</h3>
+          <p>You get a number out of 100 plus the gaps worth closing before you hit send.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>0 to Shipped Resume Parser — a mock build. No backend, no uploads, no tracking.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
