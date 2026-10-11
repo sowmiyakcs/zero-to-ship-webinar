@@ -170,8 +170,7 @@ main {
 .gauge-fill {
   stroke: var(--accent);
   stroke-linecap: round;
-  stroke-dasharray: 326.7;
-  stroke-dashoffset: 326.7; /* set by JS; transitions as it fills */
+  /* dash values are set inline from App.jsx; the offset transition animates the fill */
   transition: stroke-dashoffset 1s ease;
 }
 
