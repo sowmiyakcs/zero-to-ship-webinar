@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import './jd.css'
+import '../jd.css'
 
 export default function UploadZone({ error, jd, onJdChange, onFile }) {
   const inputRef = useRef(null);
